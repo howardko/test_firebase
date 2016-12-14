@@ -1,0 +1,24 @@
+{
+  "server": {
+    "port": "0.0.0.0:8080"
+  },
+  "notify": {
+    "server_key": "AIzaSyDbUA8JNbuLsFvl0p7FSmfTSeOsZrRXEYo"
+  },
+  "mongo": {
+    "host": "127.0.0.1:27017",
+    "dbname": "test",
+    "timeout_ms": 100,
+    "auth": {
+      "enabled": true,
+      "username": "wordsmap",
+      "password": "1qaz2wsx",
+      "mechanism": "SCRAM-SHA-1",
+      "authentication_database": "admin"
+    }
+  },
+  "query": {
+    "offset": 0,
+    "limit": 30
+  }
+}
