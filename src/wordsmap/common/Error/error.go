@@ -2,7 +2,7 @@ package Error
 
 import "fmt"
 
-// QNAPError define any error we want to present to response
+// define any error we want to present to response
 type Error struct {
 	Code    string
 	Status  int

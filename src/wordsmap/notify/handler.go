@@ -8,11 +8,11 @@ import (
 // SetupRoute for notify api
 func SetupRoute(r *gin.RouterGroup) {
 
-	// update_tunnel_agent
+	// add a notification pair
 	// curl -X POST -d '{"user_id":"howardko","token":"23786dgqjhbamio' $(ip dev):8080/v0.1/notify/pair
 	r.POST("/notify/pair", AddPairHandler)
 
-	// get_tunnels
+	// get notification pair
 	r.GET("/notify/pair/:pair_id", GetPairHandler)
 
 }
