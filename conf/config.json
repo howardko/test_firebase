@@ -3,7 +3,7 @@
     "port": "0.0.0.0:8080"
   },
   "notify": {
-    "server_key": "AIzaSyDbUA8JNbuLsFvl0p7FSmfTSeOsZrRXEYo"
+    "server_key": "AAAAeMju1PA:APA91bEQ5iVAjsnb4E8TE1rfr0L2jmsS4AWlfOlmeLDSJ-e0VKiBzxvkMbFeCx_t_wvzj3Vt7xSq1KjULx4L6NEAwqe082bMD9_0cS6E5DJwxNwJe9kSp6qAB9iW3cqdc-ZCQcGuERmnODzSCtsBnJgadueKG54A7g"
   },
   "mongo": {
     "host": "127.0.0.1:27017",

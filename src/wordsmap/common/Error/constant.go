@@ -62,4 +62,5 @@ var (
 
 	// notify
 	PairNotFound = Error{"notify.pair.notfound.error", http.StatusBadRequest, "Pair is not found."}
+	SendEventError = Error{"notify.send.event.error", http.StatusBadRequest, "Send event error"}
 )

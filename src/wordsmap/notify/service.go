@@ -1,19 +1,13 @@
 package notify
 
 import (
-	"fmt"
 	"github.com/NaySoftware/go-fcm"
-	"github.com/gin-gonic/gin"
 	"wordsmap/common/util"
+	"wordsmap/common/Error"
 )
 
 var tmpdb PairPost
 var pairID = "12345"
-
-func SendEvent(c *gin.Context) {
-
-
-}
 
 func AddPair(pair *PairPost) (string, error){
 	tmpdb = *pair
@@ -24,22 +18,33 @@ func GetPair(pairID string) (*PairPost, error){
 	return &tmpdb, nil
 }
 
-func sendEvent(token string, data map[string]string) map[string]string{
+func SendEvent(pairID string, title string, message string, data map[string]string) (error, map[string]string){
 
+	// get token from pair
+	token := tmpdb.Token
 	ids := []string{
 		token,
 	}
 
 	c := fcm.NewFcmClient(util.Config.Notify.Server_Key)
+	payload := fcm.NotificationPayload{Title: title, Body: message}
+	c.SetNotificationPayload(&payload)
 	c.NewFcmRegIdsMsg(ids, data)
 
 	result, err := c.Send()
 
-	if err == nil {
-		return result.Results[0]
+	if err == nil{
+		if result.Ok == false{
+			return Error.SendEventError, map[string]string{"error": string(result.StatusCode)}
+		}
+
+		if result.Success == 1 {
+			return nil, result.Results[0]
+		}else{
+			return Error.SendEventError, map[string]string{"error": string(result.StatusCode)}
+		}
 	} else {
-		fmt.Println(err)
-		return map[string]string{ "error": err.Error()}
+		return err, map[string]string{"error": err.Error()}
 	}
 
 }
